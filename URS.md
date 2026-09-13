@@ -1,10 +1,10 @@
 # User Requirements Specification (URS)
 
-## Personal Website & Editorial Blog: “SYNTAX ERROR”
+## Personal Website & Editorial Blog: “LEARNING BY HEART”
 
 ## 1. Document Control & Project Overview
 
-- **Project Name:** Syntax Error (`syntaxerror.dev` or equivalent custom domain)
+- **Project Name:** Learning by Heart (`learningbyheart.dev` or equivalent custom domain)
 - **Author/Owner:** Senior Python Backend Developer / Technical Philosopher
 - **Target Audience:** Peers across software engineering, philosophy, metaphysics, politics, and social sciences.
 - **Hosting Infrastructure:** GitHub Pages (Static Site Architecture)
@@ -60,7 +60,7 @@ Structural Neo-Brutalism paired with a clean, high-contrast, non-retro editorial
 
 #### Top Navigation Framework
 
-- Persistent site header (`SYNTAX ERROR`).
+- Persistent site header (`LEARNING BY HEART`).
 - Navigation tabs: `LOG`, `ARCHIVE`, `TRANSMISSIONS`, `TERMINAL`.
 - Live system status flag (`MODE: GHOST`).
 

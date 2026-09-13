@@ -1,4 +1,4 @@
-# SYNTAX ERROR — Project Plan
+# LEARNING BY HEART — Project Plan
 
 ## Purpose
 
@@ -234,7 +234,7 @@ GitHub Actions will build and deploy every merged change automatically. Pull req
 
 #### Recommendation
 
-Use the custom domain from launch if `syntaxerror.dev` is available and under the owner’s control; otherwise use the GitHub Pages URL temporarily.
+Use the custom domain from launch if `learningbyheart.dev` is available and under the owner’s control; otherwise use the GitHub Pages URL temporarily.
 
 #### Decision
 
@@ -805,7 +805,7 @@ All routes remain visible without horizontal gestures, using responsive CSS and 
 
 ## Confirmed Product Direction
 
-- Project name: SYNTAX ERROR
+- Project name: LEARNING BY HEART
 - Hosting target: GitHub Pages
 - Content format: Markdown
 - Visual direction: structural neo-brutalism with a high-contrast editorial layout
