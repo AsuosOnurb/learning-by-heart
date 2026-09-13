@@ -1,4 +1,4 @@
 ---
 const { post } = Astro.props; const { data } = post; const date = data.date.toLocaleDateString('en-US',{year:'2-digit',month:'2-digit',day:'2-digit'}).replaceAll('/','.');
 ---
-<article class="transmission-card"><div class="card-body"><p class="meta">[{date}] || {data.categories[0]} || AS MUCH TIME AS NECESSARY</p><h2><a href={`${import.meta.env.BASE_URL}posts/${post.slug}/`}>{data.title}</a></h2><p>{data.description}</p></div><div class="card-footer"><a href={`${import.meta.env.BASE_URL}posts/${post.slug}/`}>/ READ_TRANSMISSION</a><span>COMMENTS (—)</span><span class="tag">TAGS: {data.tags.map((tag) => `[${tag.toUpperCase()}]`).join(' ')}</span></div></article>
+<article class="transmission-card"><div class="card-body"><p class="meta">[{date}] || {data.categories[0]} || AS MUCH TIME AS NECESSARY</p><h2><a href={`${import.meta.env.BASE_URL}posts/${post.slug}/`}>{data.title}</a></h2><p>{data.description}</p></div><div class="card-footer"><a href={`${import.meta.env.BASE_URL}posts/${post.slug}/`}>/ READ_NOTE</a><span>MARGINALIA (—)</span><span class="tag">FILED UNDER: {data.tags.map((tag) => `[${tag.toUpperCase()}]`).join(' ')}</span></div></article>

@@ -61,8 +61,8 @@ Structural Neo-Brutalism paired with a clean, high-contrast, non-retro editorial
 #### Top Navigation Framework
 
 - Persistent site header (`LEARNING BY HEART`).
-- Navigation tabs: `LOG`, `ARCHIVE`, `TRANSMISSIONS`, `TERMINAL`.
-- Live system status flag (`MODE: GHOST`).
+- Navigation tabs: `NOTEBOOK`, `INDEX`, `ESSAYS`, `ABOUT`.
+- Reading status flag (`READING MODE: OPEN`).
 
 #### Topic / Metadata Sidebar
 
@@ -74,7 +74,7 @@ Structural Neo-Brutalism paired with a clean, high-contrast, non-retro editorial
 
 - Encapsulated inside hard-bordered grid blocks.
 - Metadata headers displaying exact timestamps (`[MM.DD.YY]`), category tags, and the reading indicator `AS MUCH TIME AS NECESSARY`.
-- Action links: `/ READ_TRANSMISSION`, comment counters, and structural tags.
+- Action links: `/ READ_NOTE`, marginalia counters, and `FILED UNDER` tags.
 
 ### B. Individual Post Page (`/posts/[slug]`)
 
@@ -91,9 +91,9 @@ Structural Neo-Brutalism paired with a clean, high-contrast, non-retro editorial
 
 #### Post Footer & Action Bar
 
-- Share utility (`/ SHARE_TRANSMISSION`) and complete post metadata tags.
-- Comment section (Terminal Logs): integrated Giscus widget styled natively to match the 2px solid-border card system.
-- Form input field styled as an active terminal prompt (`ENCRYPTED_TRANSMISSION_INPUT...`).
+- Share utility (`/ SHARE_NOTE`) and complete post metadata tags.
+- Comment section (Marginalia): integrated Giscus widget styled natively to match the 2px solid-border card system.
+- Form input field styled as a notebook prompt (`LEAVE_A_THOUGHT...`).
 
 ## 6. Non-Functional & SEO Requirements
 

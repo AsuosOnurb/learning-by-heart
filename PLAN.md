@@ -429,14 +429,14 @@ Use a topic and metadata panel containing category filters, archive context, and
 
 The sidebar remains functional and editorial, supporting discovery without presenting personal profile information.
 
-### D-016 — Terminal Section
+### D-016 — About Section
 
-**Question:** What should the `TERMINAL` navigation section represent?
+**Question:** What should the `ABOUT` navigation section represent?
 
 #### Option A: System / site information page
 
 - Presents the site’s status, architecture, publishing principles, and technical stack.
-- Fits the `MODE: GHOST` and transmission-console language.
+- Fits the editorial notebook’s architecture and publishing principles.
 - Requires no external service or personal contact details.
 
 #### Option B: Contact and utility page
@@ -447,7 +447,7 @@ The sidebar remains functional and editorial, supporting discovery without prese
 
 #### Recommendation
 
-Use `TERMINAL` as a system and site-information page at launch, with optional contact utilities added later if needed.
+Use `ABOUT` as a notebook architecture and site-information page at launch, with optional contact utilities added later if needed.
 
 #### Decision
 

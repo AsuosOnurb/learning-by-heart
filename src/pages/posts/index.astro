@@ -2,4 +2,4 @@
 import { getCollection } from 'astro:content'; import BaseLayout from '../../layouts/BaseLayout.astro'; import TransmissionCard from '../../components/TransmissionCard.astro';
 const posts=(await getCollection('transmissions',({data})=>!data.draft)).sort((a,b)=>b.data.date.valueOf()-a.data.date.valueOf());
 ---
-<BaseLayout title="TRANSMISSIONS"><section class="page-heading"><p class="eyebrow">/ TRANSMISSION INDEX</p><h1>THE LOG</h1><p>Long-form transmissions, filed by date and subject.</p></section><div class="archive-grid">{posts.map((post)=><TransmissionCard post={post}/>)}</div></BaseLayout>
+<BaseLayout title="ESSAYS"><section class="page-heading"><p class="eyebrow">/ ESSAY INDEX</p><h1>THE NOTEBOOK</h1><p>Long-form essays, filed by date and subject.</p></section><div class="archive-grid">{posts.map((post)=><TransmissionCard post={post}/>)}</div></BaseLayout>
