@@ -1,5 +1,6 @@
 ---
-import { getCollection } from 'astro:content'; import BaseLayout from '../layouts/BaseLayout.astro'; const posts=await getCollection('transmissions',({data})=>!data.draft);
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
-<BaseLayout title="SEARCH"><section class="page-heading"><p class="eyebrow">/ NOTEBOOK QUERY</p><h1>SEARCH THE NOTEBOOK</h1><input id="search-input" type="search" placeholder="SEARCH_NOTES..." aria-label="Search notes" style="width:100%;border:2px solid #111;background:#faf8f1;padding:12px;font-family:var(--mono);" /></section><div id="search-results" class="archive-grid">{posts.map((post)=><a data-search={`${post.data.title} ${post.data.description} ${post.data.tags.join(' ')}`.toLowerCase()} href={`${import.meta.env.BASE_URL}posts/${post.slug}/`}>{post.data.title}</a>)}</div></BaseLayout>
-<script>const input=document.querySelector('#search-input');const results=[...document.querySelectorAll('[data-search]')];input?.addEventListener('input',(event)=>{const query=event.target.value.toLowerCase().trim();results.forEach((result)=>{result.hidden=query.length>0&&!result.dataset.search.includes(query);});});</script>
+<BaseLayout title="SEARCH"><section class="page-heading"><p class="eyebrow">/ NOTEBOOK QUERY</p><h1>SEARCH THE NOTEBOOK</h1><p>Search across every published note, subject, and filed-under tag.</p></section><div id="search" data-pagefind-ignore></div></BaseLayout>
+<link rel="stylesheet" href={`${import.meta.env.BASE_URL}pagefind/pagefind-ui.css`} />
+<script type="module">import { PagefindUI } from '/learning-by-heart/pagefind/pagefind-ui.js';new PagefindUI({element:'#search',showSubResults:false,showImages:false});</script>
