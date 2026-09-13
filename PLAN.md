@@ -31,7 +31,7 @@ This is the living planning document for the personal website and editorial blog
 | D-021 | Define index page size | Decided | Ten notes per page |
 | D-022 | Define category vocabulary | Decided | Six fixed categories |
 | D-023 | Define tag policy | Decided | Free-form tags, maximum six recommended |
-| D-024 | Define reading-time display | Decided | `AS MUCH TIME AS NECESSARY` |
+| D-024 | Define post metadata display | Decided | Timestamp, category, and tags only |
 | D-025 | Define post excerpt policy | Decided | Required descriptions |
 | D-026 | Define code highlighting style | Decided | Monochrome with restrained accents |
 | D-027 | Define reading column width | Decided | Approximately `70ch` |
@@ -122,7 +122,7 @@ The minimal schema plus explicit fields for `author`, `featured`, `series`, and 
 
 #### Recommendation
 
-Use the minimal schema and calculate reading time automatically from the post body. This avoids duplicated metadata while retaining everything required for the homepage, archive, SEO, and filtering.
+Use the minimal schema and derive presentation metadata from the post body only when it adds editorial value. This avoids duplicated metadata while retaining everything required for the homepage, index, SEO, and filtering.
 
 #### Decision
 
@@ -130,7 +130,7 @@ Use the minimal schema and calculate reading time automatically from the post bo
 
 #### Rationale
 
-The schema includes the metadata needed for cards, archive views, SEO, filtering, and draft handling. Reading time will be calculated automatically from the post body to avoid duplicated metadata.
+The schema includes the metadata needed for cards, index views, SEO, filtering, and draft handling.
 
 ### D-004 — Styling Approach
 
@@ -652,17 +652,17 @@ Use free-form tags with a recommended maximum of six tags per transmission.
 
 This keeps tags precise and flexible while preventing metadata areas from becoming visually overloaded.
 
-### D-024 — Reading-Time Display
+### D-024 — Post Metadata Display
 
-**Question:** Should posts display a quantified reading time?
+**Question:** Which metadata should appear on notes and essay pages?
 
 #### Decision
 
-**No. Display the fixed reading indicator `AS MUCH TIME AS NECESSARY`.**
+**Display timestamp, category, and tags only.**
 
 #### Rationale
 
-The site treats long-form reading as an intentional activity rather than a timed task. A quantified estimate would introduce the wrong incentive for the intended audience.
+The interface should present the subject and context of each note without measuring or labeling the act of reading.
 
 ### D-025 — Post Excerpt Policy
 

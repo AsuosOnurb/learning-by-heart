@@ -62,7 +62,6 @@ Structural Neo-Brutalism paired with a clean, high-contrast, non-retro editorial
 
 - Persistent site header (`LEARNING BY HEART`).
 - Navigation tabs: `NOTEBOOK`, `INDEX`, `ESSAYS`, `ABOUT`.
-- Reading status flag (`READING MODE: OPEN`).
 
 #### Topic / Metadata Sidebar
 
@@ -73,7 +72,7 @@ Structural Neo-Brutalism paired with a clean, high-contrast, non-retro editorial
 #### Post Feed Container Cards
 
 - Encapsulated inside hard-bordered grid blocks.
-- Metadata headers displaying exact timestamps (`[MM.DD.YY]`), category tags, and the reading indicator `AS MUCH TIME AS NECESSARY`.
+- Metadata headers displaying exact timestamps (`[MM.DD.YY]`) and category tags.
 - Action links: `/ READ_NOTE`, marginalia counters, and `FILED UNDER` tags.
 
 ### B. Individual Post Page (`/posts/[slug]`)
@@ -81,7 +80,7 @@ Structural Neo-Brutalism paired with a clean, high-contrast, non-retro editorial
 #### Metadata Header Box
 
 - Post title set in commanding display typography.
-- Timestamp, category path, and the reading indicator `AS MUCH TIME AS NECESSARY`.
+- Timestamp, category path, and complete post metadata tags.
 
 #### The Long-Form Reading Well
 
