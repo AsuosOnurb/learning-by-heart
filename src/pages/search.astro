@@ -4,4 +4,4 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 <BaseLayout title="SEARCH"><section class="page-heading"><p class="eyebrow">/ NOTEBOOK QUERY</p><h1>SEARCH THE NOTEBOOK</h1><p>Search across every published note, subject, and filed-under tag.</p></section><div id="search" data-pagefind-ignore></div></BaseLayout>
 <link rel="stylesheet" href={`${import.meta.env.BASE_URL}pagefind/pagefind-ui.css`} />
 <script is:inline src={`${import.meta.env.BASE_URL}pagefind/pagefind-ui.js`}></script>
-<script is:inline>new window.PagefindUI({element:'#search',showSubResults:false,showImages:false});</script>
+<script is:inline>new window.PagefindUI({element:'#search',showSubResults:false,showImages:false,showFilters:false,translations:{search_label:'Search the notebook',reset:'CLEAR',zero_results:'NO NOTES FOUND.',load_more:'LOAD MORE NOTES'}});</script>
