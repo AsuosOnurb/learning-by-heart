@@ -10,7 +10,7 @@ This is the living planning document for the personal website and editorial blog
 |---|---|---|---|
 | D-001 | Select the static site generator | Decided | Astro |
 | D-002 | Select the post authoring format | Decided | Plain Markdown |
-| D-003 | Define the transmission metadata schema | Decided | Minimal frontmatter schema |
+| D-003 | Define the note metadata schema | Decided | Minimal frontmatter schema |
 | D-004 | Select the styling approach | Decided | Vanilla CSS |
 | D-005 | Define initial theme scope | Decided | Base monochrome first |
 | D-006 | Define the deployment workflow | Decided | Automatic deploy from `main` |
@@ -23,12 +23,12 @@ This is the living planning document for the personal website and editorial blog
 | D-013 | Define profile image scope | Decided | No profile image |
 | D-014 | Define public author identity | Decided | No personal sidebar identity |
 | D-015 | Define sidebar content | Decided | Topic filters, archive context, structural metadata |
-| D-016 | Define the Terminal section | Decided | System and site-information page |
-| D-017 | Define archive navigation | Decided | Latest feed plus paginated archive |
+| D-016 | Define the About section | Decided | Notebook and site-information page |
+| D-017 | Define index navigation | Decided | Recent notes plus paginated index |
 | D-018 | Define syndication | Decided | Add RSS later |
 | D-019 | Define analytics scope | Decided | No analytics initially |
-| D-020 | Define homepage feed size | Decided | Five latest transmissions |
-| D-021 | Define archive page size | Decided | Ten transmissions per page |
+| D-020 | Define homepage feed size | Decided | Five latest notes |
+| D-021 | Define index page size | Decided | Ten notes per page |
 | D-022 | Define category vocabulary | Decided | Six fixed categories |
 | D-023 | Define tag policy | Decided | Free-form tags, maximum six recommended |
 | D-024 | Define reading-time display | Decided | `AS MUCH TIME AS NECESSARY` |
@@ -809,7 +809,7 @@ All routes remain visible without horizontal gestures, using responsive CSS and 
 - Hosting target: GitHub Pages
 - Content format: Markdown
 - Visual direction: structural neo-brutalism with a high-contrast editorial layout
-- Core pages: directory/index, archive, individual transmissions, and terminal
+- Core pages: notebook, index, individual essays, and about
 - Comments: Giscus or an equivalent GitHub Discussions-based system
 
 ## Planned Milestones
@@ -817,9 +817,9 @@ All routes remain visible without horizontal gestures, using responsive CSS and 
 1. Resolve foundational technology and deployment decisions.
 2. Establish the site information architecture and content model.
 3. Create the visual foundation: typography, colors, borders, spacing, and responsive grid.
-4. Build the homepage and transmission card system.
-5. Build the individual post reading experience.
-6. Add archive, terminal, search, comments, SEO, and accessibility features.
+4. Build the homepage and note card system.
+5. Build the individual essay reading experience.
+6. Add index, about, search, marginalia, SEO, and accessibility features.
 7. Configure GitHub Actions and GitHub Pages deployment.
 8. Test performance, responsiveness, accessibility, and content publishing.
 
