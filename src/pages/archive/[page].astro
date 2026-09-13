@@ -1,0 +1,27 @@
+---
+import { getCollection } from 'astro:content';
+import PaginatedIndex from '../../components/PaginatedIndex.astro';
+
+export async function getStaticPaths() {
+  const notesPerPage = 10;
+  const allNotes = (await getCollection('transmissions', ({ data }) => !data.draft))
+    .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+  const totalPages = Math.ceil(allNotes.length / notesPerPage);
+
+  return Array.from({ length: Math.max(0, totalPages - 1) }, (_, index) => {
+    const currentPage = index + 2;
+    return {
+      params: { page: String(currentPage) },
+      props: {
+        posts: allNotes.slice((currentPage - 1) * notesPerPage, currentPage * notesPerPage),
+        currentPage,
+        totalPages,
+      },
+    };
+  });
+}
+
+const { posts, currentPage, totalPages } = Astro.props;
+---
+
+<PaginatedIndex posts={posts} currentPage={currentPage} totalPages={totalPages} />

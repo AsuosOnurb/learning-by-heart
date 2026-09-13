@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import TransmissionCard from './TransmissionCard.astro';
+
+const { posts, currentPage, totalPages } = Astro.props;
+const basePath = import.meta.env.BASE_URL;
+const pageHref = (page: number) => page === 1 ? `${basePath}archive/` : `${basePath}archive/${page}/`;
+const pageNumbers = Array.from({ length: totalPages }, (_, index) => index + 1);
+---
+
+<BaseLayout title={`INDEX — PAGE ${String(currentPage).padStart(2, '0')}`}>
+  <section class="page-heading">
+    <p class="eyebrow">/ NOTEBOOK INDEX</p>
+    <h1>ALL NOTES</h1>
+    <p>A growing record of ideas worth keeping. {posts.length} notes filed on this page.</p>
+  </section>
+
+  <section class="archive-grid" aria-label={`Index page ${currentPage}`}>
+    {posts.map((post) => <TransmissionCard post={post} />)}
+  </section>
+
+  <nav class="pagination" aria-label="Index pages">
+    {currentPage > 1 ? <a href={pageHref(currentPage - 1)}>← PREVIOUS</a> : <span aria-hidden="true">← PREVIOUS</span>}
+    <div class="pagination__pages">
+      {pageNumbers.map((page) => (
+        page === currentPage
+          ? <span class="pagination__current" aria-current="page">{String(page).padStart(2, '0')}</span>
+          : <a href={pageHref(page)} aria-label={`Page ${page}`}>{String(page).padStart(2, '0')}</a>
+      ))}
+    </div>
+    {currentPage < totalPages ? <a href={pageHref(currentPage + 1)}>NEXT →</a> : <span aria-hidden="true">NOTEBOOK END</span>}
+  </nav>
+</BaseLayout>
