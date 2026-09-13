@@ -1,7 +1,118 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
-<BaseLayout title="SEARCH"><section class="page-heading"><p class="eyebrow">/ NOTEBOOK QUERY</p><h1>SEARCH THE NOTEBOOK</h1><p>Search across every published note, subject, and filed-under tag.</p></section><div id="search" data-pagefind-ignore></div></BaseLayout>
-<link rel="stylesheet" href={`${import.meta.env.BASE_URL}pagefind/pagefind-ui.css`} />
-<script is:inline src={`${import.meta.env.BASE_URL}pagefind/pagefind-ui.js`}></script>
-<script is:inline>new window.PagefindUI({element:'#search',showSubResults:false,showImages:false,showFilters:false,translations:{search_label:'Search the notebook',reset:'CLEAR',zero_results:'NO NOTES FOUND.',load_more:'LOAD MORE NOTES'}});</script>
+<BaseLayout title="SEARCH">
+  <section class="page-heading">
+    <p class="eyebrow">/ NOTEBOOK QUERY</p>
+    <h1>SEARCH THE NOTEBOOK</h1>
+    <p>Search across every published essay, subject, and filed-under tag.</p>
+  </section>
+  <section class="notebook-search" aria-labelledby="search-heading" data-pagefind-base={import.meta.env.BASE_URL}>
+    <h2 id="search-heading" class="sr-only">Search essays</h2>
+    <form id="notebook-search-form" class="notebook-search__form" role="search">
+      <label class="sr-only" for="notebook-search-input">Search essays</label>
+      <span class="notebook-search__icon" aria-hidden="true">⌕</span>
+      <input id="notebook-search-input" name="query" type="search" autocomplete="off" placeholder="SEARCH_NOTES..." />
+    </form>
+    <p id="search-status" class="notebook-search__status" role="status" aria-live="polite"></p>
+    <div id="search-results" class="notebook-search__results" aria-live="polite"></div>
+    <button id="search-load-more" class="notebook-search__load-more" type="button" hidden>LOAD MORE NOTES</button>
+  </section>
+</BaseLayout>
+
+<script is:inline type="module">
+  const form = document.querySelector('#notebook-search-form');
+  const input = document.querySelector('#notebook-search-input');
+  const status = document.querySelector('#search-status');
+  const resultsRoot = document.querySelector('#search-results');
+  const loadMore = document.querySelector('#search-load-more');
+  const basePath = document.querySelector('.notebook-search')?.dataset.pagefindBase;
+  const pageSize = 10;
+  let pagefindModule;
+  let matchingResults = [];
+  let visibleCount = 0;
+
+  const clearResults = () => {
+    resultsRoot.replaceChildren();
+    loadMore.hidden = true;
+    matchingResults = [];
+    visibleCount = 0;
+  };
+
+  const createResultCard = async (result) => {
+    const data = await result.data();
+    const meta = data.meta ?? {};
+    const card = document.createElement('article');
+    card.className = 'notebook-search__result';
+
+    const category = document.createElement('p');
+    category.className = 'notebook-search__result-meta';
+    category.textContent = `ESSAY // ${(meta.category ?? 'NOTE').toUpperCase()}`;
+
+    const title = document.createElement('h3');
+    const titleLink = document.createElement('a');
+    titleLink.href = data.url;
+    titleLink.textContent = meta.title ?? 'UNTITLED NOTE';
+    title.append(titleLink);
+
+    const description = document.createElement('p');
+    description.textContent = meta.description ?? 'No description has been filed for this note.';
+
+    const action = document.createElement('a');
+    action.className = 'notebook-search__result-action';
+    action.href = data.url;
+    action.textContent = '/ READ_NOTE';
+
+    card.append(category, title, description, action);
+    return card;
+  };
+
+  const renderNextPage = async () => {
+    const nextResults = matchingResults.slice(visibleCount, visibleCount + pageSize);
+    const cards = await Promise.all(nextResults.map(createResultCard));
+    resultsRoot.append(...cards);
+    visibleCount += nextResults.length;
+    loadMore.hidden = visibleCount >= matchingResults.length;
+  };
+
+  const showFailure = () => {
+    clearResults();
+    status.textContent = 'SEARCH IS UNAVAILABLE.';
+    const message = document.createElement('p');
+    message.className = 'notebook-search__message';
+    const link = document.createElement('a');
+    link.href = `${basePath}archive/`;
+    link.textContent = 'BROWSE THE INDEX';
+    message.append('The notebook cannot be queried right now. ', link, '.');
+    resultsRoot.append(message);
+  };
+
+  const runSearch = async (query) => {
+    clearResults();
+    if (!query) {
+      status.textContent = '';
+      return;
+    }
+
+    status.textContent = 'SEARCHING THE NOTEBOOK...';
+    try {
+      pagefindModule ??= await import(`${basePath}pagefind/pagefind.js`);
+      const search = await pagefindModule.search(query);
+      matchingResults = search.results;
+      if (matchingResults.length === 0) {
+        status.textContent = 'NO NOTE FOUND HERE.';
+        return;
+      }
+      status.textContent = `${matchingResults.length} NOTE${matchingResults.length === 1 ? '' : 'S'} FOUND.`;
+      await renderNextPage();
+    } catch {
+      showFailure();
+    }
+  };
+
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    runSearch(input.value.trim());
+  });
+  loadMore.addEventListener('click', renderNextPage);
+</script>
