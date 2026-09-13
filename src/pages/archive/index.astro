@@ -1,0 +1,5 @@
+---
+import { getCollection } from 'astro:content'; import BaseLayout from '../../layouts/BaseLayout.astro'; import TransmissionCard from '../../components/TransmissionCard.astro';
+const posts=(await getCollection('transmissions',({data})=>!data.draft)).sort((a,b)=>b.data.date.valueOf()-a.data.date.valueOf());
+---
+<BaseLayout title="ARCHIVE"><section class="page-heading"><p class="eyebrow">/ ARCHIVE DIRECTORY</p><h1>ALL TRANSMISSIONS</h1><p>Ten transmissions per page. Six subject channels. No urgency attached.</p></section><section class="archive-grid">{posts.map((post)=><TransmissionCard post={post}/>)}</section><div class="pagination" style="margin-top:18px;"><span>PAGE 01 / 01</span><span>ARCHIVE END</span></div></BaseLayout>

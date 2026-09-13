@@ -1,0 +1,5 @@
+---
+import { getCollection, render } from 'astro:content'; import BaseLayout from '../../layouts/BaseLayout.astro';
+export async function getStaticPaths(){const posts=await getCollection('transmissions',({data})=>!data.draft); return posts.map((post)=>({params:{slug:post.slug},props:{post}}));} const {post}=Astro.props; const {Content}=await render(post); const date=post.data.date.toLocaleDateString('en-US',{year:'2-digit',month:'2-digit',day:'2-digit'}).replaceAll('/','.');
+---
+<BaseLayout title={post.data.title} description={post.data.description}><article class="reading-well"><div class="post-meta-box">[{date}] || {post.data.categories.join(' / ').toUpperCase()} || AS MUCH TIME AS NECESSARY</div><h1>{post.data.title}</h1><p>{post.data.description}</p><Content /><div class="post-footer">/ SHARE_TRANSMISSION<br />TAGS: {post.data.tags.map((tag)=>`[${tag.toUpperCase()}]`).join(' ')}</div><div class="terminal-box"><p>TERMINAL LOGS // COMMENTS AVAILABLE AFTER LAUNCH</p><p>ENCRYPTED_TRANSMISSION_INPUT...</p></div></article></BaseLayout>
